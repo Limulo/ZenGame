@@ -1,0 +1,32 @@
+@keyframes fade {
+  0%   {opacity:0;}
+  100% {opacity:1;}
+  }
+
+#g_text{
+  position: fixed;
+  right: 0px;
+  width:80%;
+  height:80%;
+  padding:2em;
+  margin:3em;
+  color: yellow;
+  background:red;
+  border:1px solid blue;
+  border-radius: 1em;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+#create{
+  position:fixed;
+  left:0px;
+  bottom:0px;
+}
+
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
