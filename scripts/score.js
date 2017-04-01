@@ -6,7 +6,7 @@ game.score = (function(){
     var phraseLength = 0.0; // time (seconds)
     var restLength = 0.0;
     // How many musical phrases before a bell or chimes sound
-    var nPhrasesBeforeBell = 2;
+    var nPhrasesBeforeBell = 10;
     var nPhrases = 0;
     var root = 60; // C4
     var prevIndex = 0;

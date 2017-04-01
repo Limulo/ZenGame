@@ -59,22 +59,29 @@ var game = (function(){
       console.log("##SETUP##");
       Tone.Transport.start();
       game.text.setup();
-      var b = document.createElement("button");
-      b.setAttribute("id", "create");
-      b.appendChild(document.createTextNode("Saggio Zen"));
-      b.addEventListener("click", function(){
-            game.text.createText();
-            if(game.instruments.prayerbowl.buffer.loaded)
-                game.instruments.prayerbowl.start();
+      var saggio = $("#wiseman");
+      saggio.click(function(){
+          if(game.text.check_ready()){
+              default_callback();
+              console.log("CALLBACK");
+          }else{
+              console.log("NO CALLBACK");
+          }
       });
-      document.body.appendChild(b);
 
+ }
+
+ function default_callback(){
+     game.text.createText();
+     if(game.instruments.prayerbowl.buffer.loaded)
+         game.instruments.prayerbowl.start();
  }
 
   return {
     init:init,
     load:load,
-    setup:setup
+    setup:setup,
+    default_callback:default_callback
   };
 
 })();

@@ -1,32 +1,55 @@
-@keyframes fade {
-  0%   {opacity:0;}
-  100% {opacity:1;}
-  }
+@font-face {
+    font-family: 'Calligraffitti';
+    font-weight:normal;
+    font-style: cursive;
+    src:url("../fonts/Calligraffitti/Calligraffitti-Regular.ttf") format("TrueType");
 
-#g_text{
+    }
+
+#koan{
   position: fixed;
   right: 0px;
-  width:80%;
-  height:80%;
+  width:70%;
+  height: 65%;
   padding:2em;
   margin:3em;
-  color: yellow;
-  background:red;
-  border:1px solid blue;
+  color: black;
+  background:white;
+  opacity:0.5;
   border-radius: 1em;
-  animation-name: fade;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
+}
+#koan p {
+    font-family:'Calligraffitti';
+    font-size:2.5em;
+    text-align: left;
+    opacity:1;
 }
 
-#create{
+#wiseman{
   position:fixed;
-  left:0px;
-  bottom:0px;
+  left:1em;
+  bottom:1em;
+  width: 20%;
 }
 
-
+#bamboo{
+    position:fixed;
+    right:1em;
+    top:15%;
+    width:30%;
+    opacity:0.5;
+}
+#limulo{
+    font-family: courier, sans-serif;
+    font-size: 1em;
+    position:fixed;
+    bottom: 5px;
+    right:20px;
+    text-align:right;
+}
 body {
   margin: 0px;
   padding: 0px;
+  background-image: url("../images/background.png");
+  font-size: 15px;
 }

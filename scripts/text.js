@@ -1,5 +1,12 @@
 game.text = (function(){
     var grammar;
+    var t_fadeIn = 2000,
+        t_fadeOut=4000,
+        t_read=5000;
+    var b_ready = true;
+    var b_busy = false;
+
+    /*
     var data = {
       "start":["#[myPlace:#path#]line#"],
       "line":["#mood.capitalize# and #mood#, the #myPlace# was #mood# with #substance#", "#nearby.capitalize# #myPlace.a# #move.ed# through the #path#, filling me with #substance#"],
@@ -10,11 +17,10 @@ game.text = (function(){
       "move":["spiral", "twirl", "curl", "dance", "twine", "weave", "meander", "wander", "flow"]
 
     };
-
-
+  */
     var data2 = {
       "start":["#koan#"],
-      "koan":["Like this #object# your #element# is #status# #negative#. \nIf you don't #action#, no #positive# will come."],
+      "koan":["Like this #object# your #element# is #status# #negative#. <br/><br/>If you don't #action#, no #positive# will come."],
       "object":["teacup is full of liquid", "glass of water", "lake can rise and overflow"],
       "element":["heart", "mind", "universe", "life", "creativity", "being"],
       "status":["full of", "indulging in", "focusing on", "relating to"],
@@ -28,30 +34,32 @@ game.text = (function(){
     }
 
     function createText(){
-      var txt = grammar.flatten("#start#");
-      var prev_div=document.getElementById("g_text");
-      if(prev_div===null){
-        console.log("Non c'è: lo creo");
-        var text_div = document.createElement("div");
-        text_div.setAttribute("id", "g_text");
-        text_div.innerHTML=txt;
-        var button = document.getElementById("create");
-        document.body.insertBefore(text_div, button);
-      }else{
-        console.log("C'è già: lo uso");
-        prev_div.innerHTML=txt;
-        clearTimeout(timer);
-      }
-      timer = setTimeout(refresh, 7000);
+        let txt = grammar.flatten("#start#");
+        t_read = txt.length * 50;
+        let element= $("#koan");
+        element.html("<p>" + txt + "</p>");
+        if(b_busy){
+            clearTimeout(timer);
+            timer = setTimeout(refresh, t_read);
+        } else {
+            b_ready=false;
+            element.fadeIn(t_fadeIn, "swing", function(){b_ready=true;  b_busy = true;});
+            timer = setTimeout(refresh, (t_fadeIn + t_read));
+        }
+        console.log("t read : " + t_read);
     }
 
     function refresh(){
-      var element = document.getElementById("g_text");
-      element.parentNode.removeChild(element);
+        b_ready=false;
+        $("#koan").fadeOut(t_fadeOut, "swing", function(){b_ready = true;  b_busy=false;});
     }
 
+    function check_ready(){
+        return b_ready;
+    }
     return{
         setup:setup,
-        createText:createText
+        createText:createText,
+        check_ready:check_ready
     };
 })();
