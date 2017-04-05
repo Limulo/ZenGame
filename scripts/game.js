@@ -57,18 +57,14 @@ var game = (function(){
 
   function setup(){
       console.log("##SETUP##");
-      Tone.Transport.start();
       game.text.setup();
       var saggio = $("#wiseman");
       saggio.click(function(){
           if(game.text.check_ready()){
               default_callback();
-            //  console.log("CALLBACK");
-          }else{
-              //console.log("NO CALLBACK");
           }
       });
-
+      Tone.Transport.start();
  }
 
  function default_callback(){

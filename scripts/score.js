@@ -41,7 +41,7 @@ game.score = (function(){
         index = prevIndex + jump;
       } while( index < 0 || index > scale.length-1);
       degree = scale[ index ];
-      if(bDebug) console.log("idx: "+prevIndex+"; jmp: "+jump+"; new idx: "+index+"; degree: "+degree+";" );
+      //if(bDebug) console.log("idx: "+prevIndex+"; jmp: "+jump+"; new idx: "+index+"; degree: "+degree+";" );
       prevIndex = index;
 
       /*
@@ -58,7 +58,7 @@ game.score = (function(){
     // take a rest on the basis of the phrase length returned so far
     // It returns:
     // - TRUE: if we are planning to play a new note;
-    // - FALSE: if we whant a rest.
+    // - FALSE: if we want a rest.
     function shouldRest()
     {
       restLength = 0.0;
@@ -74,7 +74,7 @@ game.score = (function(){
       return false;
     }
 
-    // how logn the note will be
+    // note duration
     function howLong()
     {
       let noteDur;
@@ -102,11 +102,11 @@ game.score = (function(){
       if(bDebug) console.log("["+midiNote+", "+dur+"] -> freq:"+Math.floor(freq)+";");
 
       if( phraseLength == 0.0 ) {
-        if(bDebug) console.log("trigger attack");
+        //if(bDebug) console.log("trigger attack");
         game.instruments.setPortamento(0);
         game.instruments.flute_synth.triggerAttack( freq, time );
       } else {
-        if(bDebug) console.log("setNote");
+        //if(bDebug) console.log("setNote");
         game.instruments.setPortamento(0.1);
         game.instruments.flute_synth.setNote(freq);
       }
@@ -114,7 +114,7 @@ game.score = (function(){
       phraseLength += Tone.Time(dur).toSeconds();
 
       if ( shouldRest() ) {
-        if(bDebug) if(bDebug) console.log("triggerRelease");
+        //if(bDebug) console.log("triggerRelease");
         game.instruments.flute_synth.triggerRelease( time+Tone.Time(dur).toSeconds() );
         nPhrases ++;
         if( nPhrases >= nPhrasesBeforeBell )
@@ -128,8 +128,8 @@ game.score = (function(){
 
       // schedule the next note with its duration
       //let nextDur = Math.floor( Math.random()*2.75 + 0.25 );
-      let nextDur = howLong();
-      e = new Tone.Event( fluteCallback, nextDur );
+      //let nextDur = howLong();
+      e = new Tone.Event( fluteCallback, howLong() );
       e.start( time+Tone.Time(dur).toSeconds()+restLength );
     }
 
