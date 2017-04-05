@@ -2,7 +2,7 @@
 //Tone.Transport.start();
 game.score = (function(){
     var e;
-    var bDebug = false;
+    var bDebug = true;
     var phraseLength = 0.0; // time (seconds)
     var restLength = 0.0;
     // How many musical phrases before a bell or chimes sound
