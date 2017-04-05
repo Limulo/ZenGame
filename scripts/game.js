@@ -63,9 +63,9 @@ var game = (function(){
       saggio.click(function(){
           if(game.text.check_ready()){
               default_callback();
-              console.log("CALLBACK");
+            //  console.log("CALLBACK");
           }else{
-              console.log("NO CALLBACK");
+              //console.log("NO CALLBACK");
           }
       });
 

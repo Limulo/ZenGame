@@ -6,36 +6,55 @@ game.text = (function(){
     var b_ready = true;
     var b_busy = false;
 
-    /*
-    var data = {
-      "start":["#[myPlace:#path#]line#"],
-      "line":["#mood.capitalize# and #mood#, the #myPlace# was #mood# with #substance#", "#nearby.capitalize# #myPlace.a# #move.ed# through the #path#, filling me with #substance#"],
-      "nearby":["beyond the #path#", "far away", "ahead", "behind me"],
-      "substance":["light", "reflections", "mist", "shadow", "darkness", "brightness", "gaiety", "merriment"],
-      "mood":["overcast", "alight", "clear", "darkened", "blue", "shadowed", "illuminated", "silver", "cool", "warm", "summer-warmed"],
-      "path":["stream", "brook", "path", "ravine", "forest", "fence", "stone wall"],
-      "move":["spiral", "twirl", "curl", "dance", "twine", "weave", "meander", "wander", "flow"]
+    var koans = [];
 
+    koans[0] = {
+
+          "start":["#koan#"],
+          "koan":["Like this #object# your #element# is #status# #negative#. <br/><br/>If you don't #action#, no #positive# will come."],
+          "object":["teacup is full of liquid", "glass of water", "lake can rise and overflow"],
+          "element":["heart", "mind", "universe", "life", "creativity", "being"],
+          "status":["full of", "indulging in", "focusing on", "relating to"],
+          "negative":["selfishness", "power", "fear", "anger", "confusion"],
+          "action":["relax", "calm", "take a break", "stop"],
+          "positive":["happiness", "joy", "brilliant idea", "relief"]
+        };
+
+    koans[1] = {
+    		"start": ["#koan#"],
+    		"koan": ["Devote your #resource# to #activity# and in this way attain true #goal#."],
+    		"resource": ["time", "attention", "concentration", "self"],
+    		"activity": ["meditation", "exploration", "expansion of your conscience"],
+    		"goal": ["realization", "fullfillment"]
     };
-  */
-    var data2 = {
-      "start":["#koan#"],
-      "koan":["Like this #object# your #element# is #status# #negative#. <br/><br/>If you don't #action#, no #positive# will come."],
-      "object":["teacup is full of liquid", "glass of water", "lake can rise and overflow"],
-      "element":["heart", "mind", "universe", "life", "creativity", "being"],
-      "status":["full of", "indulging in", "focusing on", "relating to"],
-      "negative":["selfishness", "power", "fear", "anger", "confusion"],
-      "action":["relax", "calm", "take a break", "stop"],
-      "positive":["happiness", "joy", "brilliant idea", "relief"]
+
+
+    koans[2] = {
+    	"hero" : ["Yamaoka Tesshu", "Ryonen", "Shingen", "Shunkai"],
+    	"master":["Dokuon of Shokoku", "Gasan", "Joshu", "Gukei"],
+    	"heroAdj": ["a young student of Zen", "a hopeful sorcerer", "a wannabe Zen master", "a common farmer"],
+    	"habit":["visited one Zen master after another", "was talking to anyone about Zen teachings", "kept on looking for the REAL master"],
+    	"accident":["called upon #master#", "accidentaly met #master#", "eventually reached #master#'s house"],
+    	"talk": ["The mind, Buddha, and sentient beings, after all, do not exist", "The true nature of phenomena is emptiness, nothing exists", "There is no relaization, no delusion, no sage, no mediocrity, nothing exists", "Nothing exists. There is no giving and nothing to be received."],
+    	"masterAction": ["who was smoking quitely", "who was looking at fishes in the pond", "who was admiring the cranes flying in the sky", "who was tired of the stupid young man"],
+    	"masterReaction": ["Suddenly he whacked #hero# with his #object#"],
+    	"object": ["bamboo pipe", "wooden cane", "bamboo cane", "bamboo flute"],
+    	"reply": ["If nothing exists, where did this anger come from?"],
+    	"start": ["#[hero:#hero#][master:#master#]koan#"],
+    	"koan": ["#hero#, #heroAdj#, #habit#. One day he #accident#.<br/>Desiring to show his attainment, he said \"#talk#\".<br/>#master#, #masterAction#, said nothing.<br/>#masterReaction#. This made the youth quite angry.<br/>#master# asked: \"#reply#\""]
     };
+
+
     var timer;
     function setup(){
-        grammar = tracery.createGrammar(data2);
+        //grammar = tracery.createGrammar( koans[Math.floor(Math.random()*koans.length)] );
     }
 
     function createText(){
+        var index = Math.floor(Math.random()*koans.length);
+        grammar = tracery.createGrammar( koans[index]);
         let txt = grammar.flatten("#start#");
-        t_read = txt.length * 50;
+        t_read = txt.length * 60;
         let element= $("#koan");
         element.html("<p>" + txt + "</p>");
         if(b_busy){
