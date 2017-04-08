@@ -1,5 +1,5 @@
 define(["libs/tracery"],function(t){
-  console.log("grammar.js: loading TRACERY");
+  //console.log("grammar.js: loading TRACERY");
 
   var text;
   var t_fadeIn = 2000,
@@ -25,7 +25,7 @@ define(["libs/tracery"],function(t){
           element.fadeIn(t_fadeIn, "swing", function(){b_ready=true;  b_busy = true;});
           timer = setTimeout(refresh, (t_fadeIn + t_read));
       }
-      console.log("t read : " + t_read);
+      //console.log("t read : " + t_read);
   }
 
   function refresh(){

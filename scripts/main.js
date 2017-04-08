@@ -1,5 +1,5 @@
 define(function(require){
-  console.log("main.js");
+  //console.log("main.js");
   var score = require("./score");
   var grammar = require ("./grammar");
   var prayerbowl = score.prayerbowl;

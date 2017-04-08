@@ -1,5 +1,5 @@
 define(["libs/Tone"],function(Tone){
-  console.log("instruments.js: loading TONE");
+  //console.log("instruments.js: loading TONE");
 
   //var portamento = 0.1;
   var flute_synth = new Tone.MonoSynth();

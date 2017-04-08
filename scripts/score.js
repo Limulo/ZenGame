@@ -1,5 +1,5 @@
 define(["require","./instruments"],function(require){
-  console.log("score.js: loading instruments.js");
+  //console.log("score.js: loading instruments.js");
   var instruments = require("./instruments");
   var Tone = instruments.Tone;
   var prayerbowl = instruments.prayerbowl;

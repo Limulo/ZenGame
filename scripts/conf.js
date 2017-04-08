@@ -7,5 +7,5 @@ requirejs.config({
 
 requirejs(["libs/jquery","main"],
 function   ($, main) {
-    console.log("MAIN loaded");
+    //console.log("MAIN loaded");
 });
