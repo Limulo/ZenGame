@@ -1,7 +1,7 @@
 /**
 * @author Kate Compton
 */
-     
+
 var tracery = {
     utilities : {}
 };
@@ -1220,4 +1220,4 @@ var tracery = {
 
     };
 
-})(); 
+})();
